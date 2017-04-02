@@ -8,11 +8,14 @@ function addRoute(method, url, handlers) {
 
   let lastHandler = handlers.pop();
   if (lastHandler.constructor.name === 'GeneratorFunction') {
+    const lastHandlerGenerator = lastHandler.bind({}); //cloning
     lastHandler = function handler() {
-      run( lastHandler.bind( null, ...arguments ) ).catch(e => {
+      run( lastHandlerGenerator.bind( null, ...arguments ) ).catch(e => {
         arguments[arguments.length - 1](e);
       });
     }
+  } else {
+
   }
   this._router[method](`${this.prefix}${url}`, ...this.filters.concat( handlers ), lastHandler);
 }

@@ -1,6 +1,6 @@
 {
   "name": "express_controller",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A handy class to generate MVC controllers for express.js apps",
   "main": "controller.js",
   "dependencies": {

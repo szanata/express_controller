@@ -1,10 +1,10 @@
 {
-  "name": "express-controller",
+  "name": "express_controller",
   "version": "0.0.1",
   "description": "A handy class to generate MVC controllers for express.js apps",
   "main": "controller.js",
   "dependencies": {
-    "run": "madeinstefano/run#1.0.0"
+    "run": "github:madeinstefano/run#1.0.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:madeinstefano/express-controller.git"
+    "url": "git+ssh://git@github.com/madeinstefano/express_controller.git"
   },
   "keywords": [
     "express",
@@ -29,9 +29,12 @@
     "test": "make test"
   },
   "contributors": [
-    {
-      "name": "Stéfano Zanata",
-      "email": "made.in.stefano@gmail.com"
-    }
-  ]
+    "Stéfano Zanata <made.in.stefano@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/madeinstefano/express_controller/issues"
+  },
+  "homepage": "https://github.com/madeinstefano/express_controller#readme",
+  "author": "Stéfano Zanata",
+  "license": "GPL-3.0"
 }

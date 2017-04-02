@@ -1,4 +1,5 @@
 const run = require('run');
+const express = require('express');
 
 function addRoute(method, url, cb) {
   var handler;
@@ -17,7 +18,7 @@ function addRoute(method, url, cb) {
 module.exports = class Controller {
 
   constructor(routePrefix) {
-    this._router = require('express').Router({ strict: true });
+    this._router = express.Router({ strict: true });
     this.prefix = routePrefix ? routePrefix.replace(/\/$/, '') : '';
     this.filters = [];
   }

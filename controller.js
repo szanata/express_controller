@@ -1,18 +1,20 @@
 const run = require('run');
 const express = require('express');
 
-function addRoute(method, url, cb) {
-  var handler;
-  if (cb.constructor.name === 'GeneratorFunction') {
-    handler = function handler() {
-      run( cb.bind( null, ...arguments ) ).catch(e => {
+function addRoute(method, url, handlers) {
+  if ( !handlers | handlers.length === 0 ) {
+    return this._router[method](`${this.prefix}${url}`);
+  }
+
+  let lastHandler = handlers.pop();
+  if (lastHandler.constructor.name === 'GeneratorFunction') {
+    lastHandler = function handler() {
+      run( lastHandler.bind( null, ...arguments ) ).catch(e => {
         arguments[arguments.length - 1](e);
       });
     }
-  } else {
-    handler = cb;
   }
-  this._router[method](`${this.prefix}${url}`, this.filters, handler);
+  this._router[method](`${this.prefix}${url}`, ...this.filters.concat( handlers ), lastHandler);
 }
 
 module.exports = class Controller {
@@ -27,10 +29,10 @@ module.exports = class Controller {
     this.filters.push(filter);
   }
 
-  get(url, cb) { addRoute.call(this, 'get', url, cb); }
-  post(url, cb) { addRoute.call(this, 'post', url, cb); }
-  put(url, cb) { addRoute.call(this, 'put', url, cb); }
-  delete(url, cb) { addRoute.call(this, 'delete', url, cb); }
+  get(url) { addRoute.call(this, 'get', url, Array.from(arguments).slice(1) ); }
+  post(url) { addRoute.call(this, 'post', url, Array.from(arguments).slice(1) ); }
+  put(url) { addRoute.call(this, 'put', url, Array.from(arguments).slice(1) ); }
+  delete(url) { addRoute.call(this, 'delete', url, Array.from(arguments).slice(1) ); }
 
   get routes() {
     return this._router;

@@ -14,8 +14,14 @@ function addRoute(method, url, handlers) {
         arguments[arguments.length - 1](e);
       });
     }
-  } else {
-
+  } else if (lastHandler.constructor.name === 'AsyncFunction') {
+    lastHandler = async function handler() {
+      try {
+        await lastHandler.bind( null, ...arguments);
+      } catch (e) {
+        arguments[arguments.length - 1](e);
+      }
+    }
   }
   this._router[method](`${this.prefix}${url}`, ...this.filters.concat( handlers ), lastHandler);
 }

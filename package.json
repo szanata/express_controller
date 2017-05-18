@@ -1,7 +1,7 @@
 {
   "name": "express_controller",
-  "version": "0.0.5",
-  "description": "A handy class to generate MVC controllers for express.js apps",
+  "version": "1.0.0",
+  "description": "A handy lib to generate MVC controllers for express.js apps",
   "main": "controller.js",
   "dependencies": {
     "run": "github:madeinstefano/run#1.0.0",
@@ -23,8 +23,8 @@
     "node"
   ],
   "engines": {
-    "node": "7.4.4",
-    "npm": "3.10.6"
+    "node": "7.10.0",
+    "npm": "4.4.0"
   },
   "scripts": {
     "test": "make test"

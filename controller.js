@@ -15,9 +15,10 @@ function addRoute(method, url, handlers) {
       });
     }
   } else if (lastHandler.constructor.name === 'AsyncFunction') {
+    const lastHandlerFn = lastHandler.bind({});
     lastHandler = async function handler() {
       try {
-        await lastHandler.bind( null, ...arguments);
+        await lastHandlerFn.call( null, ...arguments );
       } catch (e) {
         arguments[arguments.length - 1](e);
       }

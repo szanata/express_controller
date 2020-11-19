@@ -54,16 +54,13 @@ module.exports = ctrl.routes;
 
 ```js
 const app = express();
-app.use('/', require('your_controller_1.js') );
-app.use('/', require('your_controller_2.js') );
+const ctrl1 = require('your_controller_1.js');
+const ctrl2 = require('your_controller_2.js');
+app.use('/', ctrl1 );
+app.use('/', ctrl2 );
 // ...
-app.use('/', require('your_controller_N.js') );
-
-// OR, if those are in a path:
-walk(path.join(__dirname, '/app/controllers')).forEach(file => app.use('/', require(file)));
+app.use('/', ctrlN );
 ```
-
-In the example, `walk` is a library to get all files from a path, you can find [here](https://www.npmjs.com/package/walk.js "npm walk").
 
 #### Wait there is more!
 
@@ -88,8 +85,6 @@ ctrl.get( '/client', function *( req, res ) => {
   res.render( 'clients/index', { clients } );
 });
 ```
-
-This is done using `simplerunner` library [info here](https://www.npmjs.com/package/simplerunner "Simple Runner").
 
 3. Errors! Errors! and more Errors!
 

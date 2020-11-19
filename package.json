@@ -4,7 +4,7 @@
   "description": "A handy lib to generate MVC controllers for express.js apps",
   "main": "controller.js",
   "dependencies": {
-    "run": "github:madeinstefano/run#1.0.0",
+    "run": "github:szanata/run#1.0.0",
     "express": "4.15.2"
   },
   "devDependencies": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/madeinstefano/express_controller.git"
+    "url": "https://github.com/szanata/express_controller"
   },
   "keywords": [
     "express",
@@ -29,13 +29,9 @@
   "scripts": {
     "test": "make test"
   },
-  "contributors": [
-    "Stéfano Zanata <made.in.stefano@gmail.com>"
-  ],
   "bugs": {
-    "url": "https://github.com/madeinstefano/express_controller/issues"
+    "url": "https://github.com/szanata/express_controller/issues"
   },
-  "homepage": "https://github.com/madeinstefano/express_controller#readme",
-  "author": "Stéfano Zanata",
+  "homepage": "https://github.com/szanata/express_controller#readme",
   "license": "GPL-3.0"
 }
